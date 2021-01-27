@@ -10,7 +10,7 @@ interface Activity {
   }
 }
 
-export default function activitiesByPatient(activities: Activity[]): Array<Omit<Activity, 'patient_id'>> {
+export default function listActivities(activities: Activity[]): Array<Omit<Activity, 'patient_id'>> {
   return activities.map(({ patient_id, ...rest }) => ({
     ...rest,
   }))
