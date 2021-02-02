@@ -11,7 +11,7 @@ class CreatePatientService {
   public async execute({ name, document }: Request): Promise<Patient> {
     const patientsRepository = getRepository(Patient)
     const existingPatient = await patientsRepository.findOne({ where: { document }})
-    if (existingPatient) throw new AppError('Patient already exists')
+    if (existingPatient) throw new AppError('Patient already exists', 103)
     const patient = patientsRepository.create({ name, document })
     await patientsRepository.save(patient)
     return patient
